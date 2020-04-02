@@ -12,7 +12,9 @@
                     <a href="" class="nav-link"><i class="fab fa-product-hunt"></i> Products</a>
                 </li> 
                 <li class="nav-item">
-                    <a href="" class="nav-link"><i class="fa fa-shopping-cart"></i> My cart</a>
+                    <a href="" class="nav-link"><i class="fa fa-shopping-cart"></i> 
+                        My cart <span class="badge badge-pill badge-warning">4</span> 
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

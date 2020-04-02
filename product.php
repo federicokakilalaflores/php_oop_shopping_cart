@@ -1,73 +1,40 @@
 <?php
 
-    include_once('config/core.php');
+	// global config
+    $page_title = "Products";
+	include_once('config/core.php');
+
+	// include classes 
+    include_once('config/Database.php');
+    include_once('classes/Product.php');
+    include_once('classes/ProductImage.php');
+    include_once('classes/CartItem.php');
     include_once('layouts/header.php');
     include_once('layouts/navigation_bar.php');
+
+    // Database connection
+    $database = new Database();
+    $conn = $database->connect();
+    
+    // objects
+    $productObj = new Product($conn);
+    $productImgObj = new ProductImage($conn);
+    $cartItemObj = new CartItem($conn);
+
+    $products = $productObj->read($page_start_num, $num_per_page); 
+    $totalItem = $productObj->totalItem();
+    $total_pages = ceil($totalItem / $num_per_page);
 
 ?>
 
 	<div class="container mt-5">
-		<div class="col-md-4 offset-md-8">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search Product...">
-				<div class="input-group-append">
-					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-search"></i> 
-					</button>
-				</div>
-			</div>	
-		</div> 
-		<!-- end search bar -->
 
-		<div class="row" id="items">
-			<div class="col-md-4 mt-5" >
-				<figure class="item">
-					<img src="uploads/images/p102.jpg" class="mb-4">
-					<h6 class="text-uppercase">Lebron James Men's Navy Cleveland Cavaliers Adidas Swingman Jersey</h6>
-					<p class="mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod. </p>
-					<span class="price text-center d-block mb-3">PHP 599.00</span>
-					<button class="btn-block"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-				</figure>
-			</div> 
-			<div class="col-md-4 mt-5" >
-				<figure class="item">
-					<img src="uploads/images/p102.jpg" class="mb-4">
-					<h6 class="text-uppercase">Lebron James Men's Navy Cleveland Cavaliers Adidas Swingman Jersey</h6>
-					<p class="mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-					<span class="price text-center d-block mb-3">PHP 599.00</span>
-					<button class="btn-block"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-				</figure>
-			</div> 
-			<div class="col-md-4 mt-5" >
-				<figure class="item">
-					<img src="uploads/images/p102.jpg" class="mb-4">
-					<h6 class="text-uppercase">Lebron James Men's Navy Cleveland Cavaliers Adidas Swingman Jersey</h6>
-					<p class="mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-					<span class="price text-center d-block mb-3">PHP 599.00</span>
-					<button class="btn-block"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-				</figure>
-			</div> 
-
-			<div class="col-md-4 mt-5" >
-				<figure class="item">
-					<img src="uploads/images/p102.jpg" class="mb-4">
-					<h6 class="text-uppercase">Lebron James Men's Navy Cleveland Cavaliers Adidas Swingman Jersey</h6>
-					<p class="mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-					<span class="price text-center d-block mb-3">PHP 599.00</span>
-					<button class="btn-block"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-				</figure>
-			</div> 
-			<div class="col-md-4 mt-5" >
-				<figure class="item">
-					<img src="uploads/images/p102.jpg" class="mb-4">
-					<h6 class="text-uppercase">Lebron James Men's Navy Cleveland Cavaliers Adidas Swingman Jersey</h6>
-					<p class="mt-2 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-					<span class="price text-center d-block mb-3">PHP 599.00</span>
-					<button class="btn-block"><i class="fa fa-shopping-cart"></i> Add to cart</button>
-				</figure>
-			</div> 
-		</div>
-
+	<?php 
+	    include_once('search_bar.php');
+	    include_once('read_product_template.php');
+	    include_once('paging.php');
+	?>
+		
 	</div> 
 	<!-- end container -->
 
