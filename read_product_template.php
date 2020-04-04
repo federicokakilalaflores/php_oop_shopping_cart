@@ -10,7 +10,7 @@
 					<h6 class="text-uppercase"><?php echo $product['name'] ?></h6>
 					<span class="price text-center d-block mb-3"><i class="fa fa-dollar-sign"></i> <?php echo number_format($product['price'], 2, '.', ',') ?></span>
 					<?php
-						if($cartItemObj->isExist(1,1) > 0){
+						if($cartItemObj->isExist(1, $product['id']) > 0){
 							echo '<button class="btn-block btn-disabled" disabled> 
 								<i class="fa fa-shopping-cart"></i> Already added
 							</button>';

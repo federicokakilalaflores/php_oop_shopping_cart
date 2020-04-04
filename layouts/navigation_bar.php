@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="" class="nav-link"><i class="fab fa-product-hunt"></i> Products</a>
+                    <a href="<?php echo $home_url ?>/product.php" class="nav-link"><i class="fab fa-product-hunt"></i> Products</a>
                 </li> 
                 <li class="nav-item">
-                    <a href="" class="nav-link"><i class="fa fa-shopping-cart"></i> 
+                    <a href="<?php echo $home_url ?>/cart.php" class="nav-link"><i class="fa fa-shopping-cart"></i> 
                         My cart <span class="badge badge-pill badge-warning">4</span> 
                     </a>
                 </li>
