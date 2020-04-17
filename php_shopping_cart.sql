@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 27, 2020 at 12:22 PM
--- Server version: 10.1.24-MariaDB
--- PHP Version: 7.2.15
+-- Host: localhost
+-- Generation Time: Apr 17, 2020 at 07:32 AM
+-- Server version: 5.7.29-0ubuntu0.16.04.1
+-- PHP Version: 7.0.33-0ubuntu0.16.04.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,6 +35,18 @@ CREATE TABLE `tbl_cart_items` (
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='collection of items';
 
+--
+-- Dumping data for table `tbl_cart_items`
+--
+
+INSERT INTO `tbl_cart_items` (`id`, `product_id`, `quantity`, `user_id`, `created`, `modified`) VALUES
+(78, 40, 1, 1, '2020-04-16 23:01:01', '2020-04-17 13:58:15'),
+(79, 36, 3, 1, '2020-04-16 23:01:05', '2020-04-17 14:04:32'),
+(80, 31, 1, 1, '2020-04-16 23:01:10', '2020-04-16 15:01:10'),
+(81, 29, 1, 1, '2020-04-16 23:01:13', '2020-04-16 15:01:13'),
+(82, 28, 1, 1, '2020-04-16 23:01:17', '2020-04-16 15:01:17'),
+(83, 30, 1, 1, '2020-04-16 23:01:19', '2020-04-16 15:01:19');
+
 -- --------------------------------------------------------
 
 --
@@ -57,19 +67,19 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`id`, `name`, `description`, `price`, `created`, `modified`) VALUES
-(27, 'San Antonio Spurs Kawhi Leonard #2 \nAdidas Black T-Shirt', '&lt;p&gt;Kawhi Leonard San Antonio Spurs T shirt, made by Adidas the official on court producers of NBA apparel and jerseys.&lt;/p&gt;\r\n&lt;p&gt;Leonard and 2 are printed on the back in authentic font.&lt;/p&gt;\r\n&lt;ul&gt;\r\n&lt;li&gt;Basic Print&lt;/li&gt;\r\n&lt;li&gt;Officially licensed NBA Product&lt;/li&gt;\r\n&lt;li&gt;NBA Hologram Sticker&lt;/li&gt;\r\n&lt;li&gt;Mens Sizing&lt;/li&gt;\r\n&lt;li&gt;100% Cotton&lt;/li&gt;\r\n&lt;li&gt;Adidas &quot;Go To Tee&quot;&lt;/li&gt;\r\n&lt;/ul&gt;', '99.99', '2016-10-28 20:49:40', '2016-10-28 12:49:40'),
-(28, 'LaMarcus Aldridge San Antonio Spurs NBA Adidas Player Black T-Shirt', '&lt;p&gt;Looks like a jersey, wears like a tee -- this 100% cotton Adidas NBA player name and number t-shirt sports screen prints of your favorite player\'s name and number, plus team graphics on the chest.&lt;/p&gt;\r\n&lt;p&gt;Officially licensed by the NBA.&lt;/p&gt;', '49.99', '2016-10-28 20:52:43', '2016-10-28 12:52:43'),
-(29, 'Tim Duncan San Antonio Spurs Jersey Name and Number T-Shirt', '&lt;p&gt;Cheer on Tim Duncan and the Spurs as they begin their road to repeating as NBA champions.&lt;/p&gt;\r\n&lt;p&gt;Show your support for Duncan and the San Antonio Spurs in your very own black Spurs Name and Number Tee.&lt;/p&gt;', '29.99', '2016-10-28 20:56:23', '2016-10-28 12:56:23'),
-(30, 'Women\'s Customized San Antonio Spurs Black Replica Basketball Jersey', '&lt;p&gt;San Antonio Spurs Custom Jerseys with any name and number.&lt;/p&gt;\r\n&lt;p&gt;Choose the style and size.&lt;/p&gt;\r\n&lt;p&gt;There\'s no better way to prove your loyalty than to make this jersey your own.&lt;/p&gt;', '29.99', '2016-10-28 20:58:02', '2016-10-28 12:58:02'),
-(31, 'Klay Thompson Golden State Warriors Jersey Name and Number T-Shirt', '&lt;p&gt;It\'s Splash Time!&lt;/p&gt;\r\n&lt;p&gt;Make sure to show your support for the second half of the splash bros and get your very own Warriors Name and Number Tee.&lt;/p&gt;', '29.99', '2016-10-28 20:59:20', '2016-10-28 12:59:20'),
-(32, 'Stephen Curry Golden State Warriors #30 NBA Youth Climalite Player T-Shirt Blue', '&lt;p&gt;Featuring your favorite player\'s name and number on back with team logo at front, this Climalite polyester t-shirt provides the ultimate display of pride for a die-hard fan!&lt;/p&gt;', '29.99', '2016-10-28 21:03:19', '2016-10-28 13:03:19'),
-(33, 'Adidas Men\'s NBA Golden State Warriors-Kevin Durant #35-Mesh Logo T-Shirt', '&lt;p&gt;Show off how excited you are to welcome Kevin Durant to you Golden State Warriors with this Mesh Logo Tee from adidas.&lt;/p&gt;\r\n&lt;p&gt;It features cool graphics made from jersey like mesh and has KD\'s name and number on the back.&lt;/p&gt;\r\n&lt;p&gt;A great look, whether you\'re at the game, or a friends house watching the new look Warriors.&lt;/p&gt;', '29.99', '2016-10-28 21:05:30', '2016-10-28 13:05:30'),
-(34, 'Klay Thompson Golden State Warriors Charcoal Chinese New Year Name and Number T-shirt', '&lt;p&gt;Cheer on Klay all the way to the NBA Finals in style with this unique Chinese New Year Jersey Name and Number t-shirt by adidas.&lt;/p&gt;', '29.99', '2016-10-28 21:06:34', '2016-10-28 13:06:34'),
-(35, 'Kevin Durant #35 Women\'s Replica Name and Number Short Sleeve', '&lt;p&gt;Let everyone know who you will be cheering for this season in the adidas U Series high density name &amp;amp; number tee.&lt;/p&gt;\r\n&lt;p&gt;Adidas is the official outfitter of the NBA and this tee is the authentic take down name &amp;amp; number tee of your MVP.&lt;/p&gt;\r\n&lt;p&gt;A high density screen print on a soft cotton tee is a must have for every true NBA fan.&lt;/p&gt;', '32.24', '2016-10-28 21:08:05', '2016-10-28 13:08:05'),
-(36, 'LeBron James Men\'s Navy Cleveland Cavaliers adidas Swingman Jersey', '&lt;p&gt;Prove you are the #1 LeBron James fan with this Swingman jersey from adidas!&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;This Swingman is the ultimate Cleveland Cavaliers jersey. Whether it\'s going to the game, spending time with your friends or anything in-between - this jersey does it all.&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;The Swingman includes adidas Climacool &amp;reg; performance mesh fabrication and one layer twill wordmark, name &amp;amp; number applications.&amp;nbsp;&lt;/p&gt;\r\n&lt;p&gt;The NBA Swingman jersey - the most authentic Swingman ever made.&lt;/p&gt;', '109.93', '2016-10-28 21:08:52', '2016-10-28 13:08:52'),
-(37, 'NBA Cleveland Cavaliers Kyrie Irving #2 Men\'s Replica Jersey', '&lt;p&gt;Detailed to look like a real NBA jersey and priced to make you cheer!&lt;/p&gt;\r\n&lt;p&gt;This quality NBA Adidas Replica Revolution Jersey features screen printed team graphic, screen printed player name and number on the front and back, tagless collar, and embroidered Adidas and NBA logo\'s on the front.&lt;/p&gt;\r\n&lt;p&gt;This new style Adidas replica jersey is made of breathable, easy-care 100% polyester with Clima Cool fabrication. Officially licensed by the NBA.&lt;/p&gt;', '46.99', '2016-10-28 21:09:44', '2016-10-28 13:09:44'),
-(38, 'Kevin Love Cleveland Cavaliers #0 NBA Youth Road Jersey Wine', '&lt;p&gt;Detailed to look like a real NBA jersey, sized for a youth, and priced to make you cheer!&lt;/p&gt;\r\n&lt;p&gt;This quality NBA Adidas Replica Jersey features screen printed team graphic, screen printed player name and number on the front and back, tagless collar, and embroidered Adidas and NBA logo\'s on the front.&lt;/p&gt;\r\n&lt;p&gt;Perfect for your child or for gift giving. Made of breathable, easy-care 100% polyester with Clima Cool fabrication. Officially licensed by the NBA.', '29.99', '2016-10-28 21:46:06', '2016-10-28 13:46:06'),
-(40, 'For Mens San Antonio Spurs Kawhi Leonard #2 Cream White Christmas Day Swingman Basketball Jersey', '&lt;p&gt;This is 100% mesh polyester breathable and quick-dry jersey.&lt;/p&gt;\r\n&lt;p&gt;Player name and number graphics deliver classic style. priced to make you cheer.&lt;/p&gt;\r\n&lt;p&gt;It will be the best gift for you or your friend and family.&lt;/p&gt;', '32.00', '2016-11-02 20:15:38', '2016-11-02 12:15:38');
+(27, 'San Antonio Spurs Kawhi Leonard #2 \nAdidas Black T-Shirt', 'Kawhi Leonard San Antonio Spurs T shirt, made by Adidas the official on court producers of NBA apparel and jerseys.\nLeonard and 2 are printed on the back in authentic font.\n&lt;ul&gt;\n&lt;li&gt;Basic Print&lt;/li&gt;\n&lt;li&gt;Officially licensed NBA Product&lt;/li&gt;\n&lt;li&gt;NBA Hologram Sticker&lt;/li&gt;\n&lt;li&gt;Mens Sizing&lt;/li&gt;\n&lt;li&gt;100% Cotton&lt;/li&gt;\n&lt;li&gt;Adidas &quot;Go To Tee&quot;&lt;/li&gt;\n&lt;/ul&gt;', '99.99', '2016-10-28 20:49:40', '2016-10-28 12:49:40'),
+(28, 'LaMarcus Aldridge San Antonio Spurs NBA Adidas Player Black T-Shirt', 'Looks like a jersey, wears like a tee -- this 100% cotton Adidas NBA player name and number t-shirt sports screen prints of your favorite player\'s name and number, plus team graphics on the chest.\r\nOfficially licensed by the NBA.', '49.99', '2016-10-28 20:52:43', '2016-10-28 12:52:43'),
+(29, 'Tim Duncan San Antonio Spurs Jersey Name and Number T-Shirt', 'Cheer on Tim Duncan and the Spurs as they begin their road to repeating as NBA champions.\r\nShow your support for Duncan and the San Antonio Spurs in your very own black Spurs Name and Number Tee.', '29.99', '2016-10-28 20:56:23', '2016-10-28 12:56:23'),
+(30, 'Women\'s Customized San Antonio Spurs Black Replica Basketball Jersey', 'San Antonio Spurs Custom Jerseys with any name and number.\r\nChoose the style and size.\r\nThere\'s no better way to prove your loyalty than to make this jersey your own.', '29.99', '2016-10-28 20:58:02', '2016-10-28 12:58:02'),
+(31, 'Klay Thompson Golden State Warriors Jersey Name and Number T-Shirt', 'It\'s Splash Time!\r\nMake sure to show your support for the second half of the splash bros and get your very own Warriors Name and Number Tee.', '29.99', '2016-10-28 20:59:20', '2016-10-28 12:59:20'),
+(32, 'Stephen Curry Golden State Warriors #30 NBA Youth Climalite Player T-Shirt Blue', 'Featuring your favorite player\'s name and number on back with team logo at front, this Climalite polyester t-shirt provides the ultimate display of pride for a die-hard fan!', '29.99', '2016-10-28 21:03:19', '2016-10-28 13:03:19'),
+(33, 'Adidas Men\'s NBA Golden State Warriors-Kevin Durant #35-Mesh Logo T-Shirt', 'Show off how excited you are to welcome Kevin Durant to you Golden State Warriors with this Mesh Logo Tee from adidas.\r\nIt features cool graphics made from jersey like mesh and has KD\'s name and number on the back.\r\nA great look, whether you\'re at the game, or a friends house watching the new look Warriors.', '29.99', '2016-10-28 21:05:30', '2016-10-28 13:05:30'),
+(34, 'Klay Thompson Golden State Warriors Charcoal Chinese New Year Name and Number T-shirt', 'Cheer on Klay all the way to the NBA Finals in style with this unique Chinese New Year Jersey Name and Number t-shirt by adidas.', '29.99', '2016-10-28 21:06:34', '2016-10-28 13:06:34'),
+(35, 'Kevin Durant #35 Women\'s Replica Name and Number Short Sleeve', 'Let everyone know who you will be cheering for this season in the adidas U Series high density name &amp;amp; number tee.\r\nAdidas is the official outfitter of the NBA and this tee is the authentic take down name &amp;amp; number tee of your MVP.\r\nA high density screen print on a soft cotton tee is a must have for every true NBA fan.', '32.24', '2016-10-28 21:08:05', '2016-10-28 13:08:05'),
+(36, 'LeBron James Men\'s Navy Cleveland Cavaliers adidas Swingman Jersey', 'Prove you are the #1 LeBron James fan with this Swingman jersey from adidas\r\nThis Swingman is the ultimate Cleveland Cavaliers jersey. Whether it\'s going to the game, spending time with your friends or anything in-between - this jersey does it all.\r\nThe Swingman includes adidas Climacool performance mesh fabrication and one layer twill wordmark, name, number applications.\r\nThe NBA Swingman jersey - the most authentic Swingman ever made.', '109.93', '2016-10-28 21:08:52', '2016-10-28 13:08:52'),
+(37, 'NBA Cleveland Cavaliers Kyrie Irving #2 Men\'s Replica Jersey', 'Detailed to look like a real NBA jersey and priced to make you cheer!\r\nThis quality NBA Adidas Replica Revolution Jersey features screen printed team graphic, screen printed player name and number on the front and back, tagless collar, and embroidered Adidas and NBA logo\'s on the front.\r\nThis new style Adidas replica jersey is made of breathable, easy-care 100% polyester with Clima Cool fabrication. Officially licensed by the NBA.', '46.99', '2016-10-28 21:09:44', '2016-10-28 13:09:44'),
+(38, 'Kevin Love Cleveland Cavaliers #0 NBA Youth Road Jersey Wine', 'Detailed to look like a real NBA jersey, sized for a youth, and priced to make you cheer!\r\nThis quality NBA Adidas Replica Jersey features screen printed team graphic, screen printed player name and number on the front and back, tagless collar, and embroidered Adidas and NBA logo\'s on the front.\r\nPerfect for your child or for gift giving. Made of breathable, easy-care 100% polyester with Clima Cool fabrication. Officially licensed by the NBA.', '29.99', '2016-10-28 21:46:06', '2016-10-28 13:46:06'),
+(40, 'For Mens San Antonio Spurs Kawhi Leonard #2 Cream White Christmas Day Swingman Basketball Jersey', 'This is 100% mesh polyester breathable and quick-dry jersey.\nPlayer name and number graphics deliver classic style. priced to make you cheer.\nIt will be the best gift for you or your friend and family.', '2000.00', '2016-11-02 20:15:38', '2016-11-02 12:15:38');
 
 -- --------------------------------------------------------
 
@@ -150,7 +160,7 @@ ALTER TABLE `tbl_product_images`
 -- AUTO_INCREMENT for table `tbl_cart_items`
 --
 ALTER TABLE `tbl_cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
@@ -176,7 +186,6 @@ ALTER TABLE `tbl_cart_items`
 --
 ALTER TABLE `tbl_product_images`
   ADD CONSTRAINT `tbl_product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `tbl_products` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
