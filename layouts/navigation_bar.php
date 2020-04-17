@@ -8,15 +8,16 @@
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item <?php echo $page_title == 'Products' ? 'active': '' ?>">
                     <a href="<?php echo $home_url ?>/product.php" class="nav-link"><i class="fab fa-product-hunt"></i> Products</a>
                 </li> 
-                <li class="nav-item">
+                <li class="nav-item <?php echo strpos($page_title, 'Cart') > -1 ? 'active': '' ?>">
                     <a href="<?php echo $home_url ?>/cart.php" class="nav-link"><i class="fa fa-shopping-cart"></i> 
-                        My cart <span class="badge badge-pill badge-warning">4</span> 
+                        My cart <span class="badge badge-pill badge-warning" id="inCart"><?php echo $inCart; ?></span>  
                     </a>
                 </li>
             </ul>
+            
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a href="" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">

@@ -83,6 +83,53 @@ nav .fa, nav .fab {
 	cursor: pointer;
 }
 
+/* my cart style */
+.mycart img{
+	width:25%;
+	float: left;
+	padding: .5rem;
+}
+
+.mycart h6.prod-title{
+	font-size: 0.9rem;
+	padding: 0 1rem;
+	width:75%;
+}
+
+.mycart p.prod-description{
+	font-size: 0.8rem;
+	padding: 0 1rem;
+}
+
+.mycart .sm-input{
+	border-radius: 0;
+	border: 1px solid lightgrey;
+	width: 15%;
+	padding: 2px 7px;
+}
+
+.mycart label{
+	font-size: 0.8rem;
+}
+
+.mycart .price{
+	font-weight: 500;
+	font-size: 1.2rem;
+}
+
+.item-text{
+	font-size: .8rem;
+}
+
+p.total-label{
+	font-size: 0.9rem;
+	font-weight: 800;
+}
+
+span.total{
+	font-size: 1.4rem;
+}
+
 
 /* pagination */
 a.page-link{

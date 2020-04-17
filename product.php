@@ -9,8 +9,6 @@
     include_once('classes/Product.php');
     include_once('classes/ProductImage.php');
     include_once('classes/CartItem.php');
-    include_once('layouts/header.php');
-    include_once('layouts/navigation_bar.php');
 
     // Database connection
     $database = new Database();
@@ -21,10 +19,17 @@
     $productImgObj = new ProductImage($conn);
     $cartItemObj = new CartItem($conn);
 
+    // for showing and paginating products
     $products = $productObj->read($page_start_num, $num_per_page); 
     $totalItem = $productObj->totalItem();
     $total_pages = ceil($totalItem / $num_per_page);
 
+    // total in cart
+    $cartItemObj->user_id = 1;
+    $inCart = $cartItemObj->countCart(); 
+
+    include_once('layouts/header.php');
+    include_once('layouts/navigation_bar.php');
 ?>
 
 	<div class="container mt-5">

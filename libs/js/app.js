@@ -1,7 +1,9 @@
 
 $(document).ready(function(){
 
+	// variables
 	let cartBtns = $('.item .btn-cart');
+	let cartRemoveBtn = $('.mycart .btn-remove');
 
 	cartBtns.on('click', function(){
 
@@ -15,16 +17,36 @@ $(document).ready(function(){
 				type: 'post',
 				data: {pid: pid, uid: uid},
 				success: function(data){
-					if(data == 'success'){
+					var data = JSON.parse(data);
+					if( data.message == 'success' ){
+
 						currentBtn.removeClass('btn-active');
 						currentBtn.html('<i class="fa fa-shopping-cart"></i> Already added')
 						.addClass('btn-disabled'); 
+						$('#inCart').text(data.inCart);
+
 					} 
 				}
 			});
 		}	
-
 				
-	}); 
+	}); // end of add to cart btns
+
+
+	cartRemoveBtn.on('click', function(){
+
+		let cid = $(this).attr('data-cid');
+		let btnConfirmYes = $('#btn-confirm-yes'); 
+		let base_url = btnConfirmYes.attr('data-base_url');
+		let deleteUrl = '/delete_from_cart.php?cid=' + cid; 
+
+		btnConfirmYes.click(function(){
+			window.location.replace(base_url + deleteUrl);
+		}); 
+
+		console.log(base_url);
+		console.log(cid);
+ 
+	}); // end if cart remove btns
 
 });

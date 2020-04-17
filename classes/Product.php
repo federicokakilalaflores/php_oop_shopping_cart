@@ -32,6 +32,26 @@
 		} // end read method
 
 
+		public function readById($pid){
+
+			$query = "SELECT * FROM " . $this->table_name . 
+			" WHERE id=? LIMIT 0,1";
+
+			$stmt = $this->conn->prepare($query);
+
+			$pid = htmlspecialchars(strip_tags($pid));
+
+			$stmt->bindParam(1, $pid);
+
+			if($stmt->execute()){
+				return $stmt->fetch();
+			}
+
+			return false;
+
+		} // end readById method
+
+
 		public function totalItem(){
 
 			$query = 'SELECT id FROM ' . $this->table_name;
@@ -44,6 +64,6 @@
 
 			return false;
 
-		}
+		} // end totalItem method
 
 	}

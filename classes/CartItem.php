@@ -36,6 +36,21 @@
 			return $rows[0];
 		}
 
+		public function readByUserId(){
+
+			$query = "SELECT * FROM " . $this->table_name . 
+			" WHERE user_id=?";
+
+			$stmt = $this->conn->prepare($query);
+
+			$this->user_id = htmlspecialchars(strip_tags($this->user_id));
+
+			$stmt->execute([$this->user_id]);
+
+			return $stmt->fetchAll();
+
+		}
+
 		public function create(){
 
 			$query = "INSERT INTO " . $this->table_name . 
@@ -62,6 +77,67 @@
 			return false;
 
 		}	
+
+		public function deleteById($cid){
+			$query = "DELETE FROM " . $this->table_name . 
+			" WHERE id = ?";
+
+			$stmt = $this->conn->prepare($query);
+
+			$cid = htmlspecialchars(strip_tags($cid));
+
+			$stmt->bindParam(1, $cid, PDO::PARAM_INT);
+
+			if($stmt->execute()){
+				return true;
+			}
+
+			$this->showSqlError($stmt); 
+			return false;
+
+		}
+
+		public function updateQuantity($cid){
+			$query = "UPDATE " . $this->table_name . 
+			" SET quantity = :quantity WHERE id = :id";
+
+			$stmt = $this->conn->prepare($query);
+
+			$cid = htmlspecialchars(strip_tags($cid));
+			$this->quantity = htmlspecialchars(strip_tags($this->quantity));
+
+			$stmt->bindParam(':quantity', $this->quantity);
+			$stmt->bindParam(':id', $cid);
+
+			if($stmt->execute()){
+				return true;
+			}
+
+			$this->showSqlError($stmt);
+			return false;
+
+		}
+
+		public function countCart(){ 
+
+			$query = "SELECT COUNT(*) FROM " . $this->table_name . 
+			" WHERE user_id = :user_id";
+
+			$stmt = $this->conn->prepare($query);
+
+			$this->user_id = htmlspecialchars(strip_tags($this->user_id));
+
+			$stmt->bindParam(':user_id', $this->user_id);
+
+			if( $stmt->execute() ){
+				$rows = $stmt->fetch(PDO::FETCH_NUM);
+				return $rows[0];
+			}
+
+			$this->showSqlError($stmt); 
+			return false;
+
+		}
 
 		protected function showSqlError($stmt){
 			echo "<pre>";

@@ -28,6 +28,7 @@
 				return $stmt->fetch();
 			}
 
+			return false;
 
 		}
 
