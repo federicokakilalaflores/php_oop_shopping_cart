@@ -32,6 +32,49 @@
 		} // end read method
 
 
+		public function search($search_str, $page_start_num, $num_per_page){
+			
+			$query = "SELECT * FROM " . $this->table_name .
+			" WHERE name LIKE ? LIMIT ?, ?"; 
+
+			$stmt = $this->conn->prepare($query);
+
+			$search_str = htmlspecialchars(strip_tags($search_str));
+			
+			$search_pattern = "%$search_str%";
+
+			$stmt->bindParam(1, $search_pattern); 
+			// $stmt->bindParam(2, $search_pattern); 
+			$stmt->bindParam(2, $page_start_num, PDO::PARAM_INT);
+			$stmt->bindParam(3, $num_per_page, PDO::PARAM_INT);  
+
+			$stmt->execute();  
+
+			return $stmt->fetchAll(); 
+
+		} // end read method
+
+
+		public function totalBySeach($search_str){
+			$query = "SELECT * FROM " . $this->table_name .
+			" WHERE name LIKE ?"; 
+
+			$stmt = $this->conn->prepare($query);
+
+			$search_str = htmlspecialchars(strip_tags($search_str));
+			
+			$search_pattern = "%$search_str%";
+
+			$stmt->bindParam(1, $search_pattern); 
+
+			if($stmt->execute()){
+				return $stmt->rowCount();
+			}
+
+			return false; 
+		}
+
+
 		public function readById($pid){
 
 			$query = "SELECT * FROM " . $this->table_name . 
@@ -65,5 +108,12 @@
 			return false;
 
 		} // end totalItem method
+
+
+		protected function showSqlError($stmt){
+			echo "<pre>";
+				print_r($stmt->errorInfo);
+			echo "</pre>";
+		}
 
 	}

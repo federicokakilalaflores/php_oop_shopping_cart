@@ -3,6 +3,7 @@
 	// global config
     $page_title = "Products";
 	include_once('config/core.php');
+    $page_url = $home_url . "/product.php";
 
 	// include classes 
     include_once('config/Database.php');
@@ -35,9 +36,16 @@
 	<div class="container mt-5">
 
 	<?php 
-	    include_once('search_bar.php');
-	    include_once('read_product_template.php');
-	    include_once('paging.php');
+
+        if(count($products) > 0){
+
+    	    include_once('search_bar.php');
+    	    include_once('read_product_template.php');
+    	    include_once('paging.php');
+
+        }else{
+            echo '<div class="alert alert-info">No product exist!</div>';
+        }
 	?>
 		
 	</div> 
