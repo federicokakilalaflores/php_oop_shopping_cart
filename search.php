@@ -44,9 +44,15 @@
 
 	<?php 
 
-    	include_once('search_bar.php');
-    	include_once('read_product_template.php');
-    	include_once('paging.php');
+    	if(count($totalItem) > 0){
+
+    	    include_once('search_bar.php');
+    	    include_once('read_product_template.php');
+    	    include_once('paging.php');
+
+        }else{
+            echo '<div class="alert alert-info">No products found!</div>';
+        }
 
 	?>
 		

@@ -1,9 +1,13 @@
 <div class="container mt-5">
-	<h2>MY CART</h2>
+	<h2 class="text-uppercase"><?php echo $page_title ?></h2>
 	<?php
 		if($msg === 'deleted'){
 			echo '<div class="alert alert-info">
 					The product was removed from your cart!
+				 </div>';
+		}elseif($msg === 'updated'){
+			echo '<div class="alert alert-info">
+					The product quantity was updated from your cart!
 				 </div>';
 		}
 
@@ -55,7 +59,7 @@
 			<?php echo number_format($totalPrice, 2, '.', ',') ?> 
 		</span>
 		<div class="mt-5">
-			<button class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Proceed to checkout</button>
+			<a class="btn btn-success btn-sm" href="<?php echo $home_url ?>/checkout.php"><i class="fas fa-arrow-right"></i> Proceed to checkout</a>
 		</div>
 	</div>
 	<!-- end of total and btns -->
@@ -86,7 +90,7 @@
 	<?php
 		else:
 			echo '<div class="alert alert-info">
-				No records exist!
+				No Items in cart!
 			</div>';
 		endif; 
 	?>	

@@ -97,6 +97,25 @@
 
 		}
 
+		public function deleteAllByUser(){
+
+			$query = "DELETE FROM " . $this->table_name . 
+			" WHERE user_id = ?";
+
+			$stmt = $this->conn->prepare($query);
+
+			$this->user_id =  htmlspecialchars(strip_tags($this->user_id));
+
+			$stmt->bindParam(1, $this->user_id, PDO::PARAM_INT);
+
+			if($stmt->execute()){
+				return true; 
+			}
+
+			return false;
+
+		}
+
 		public function updateQuantity($cid){
 			$query = "UPDATE " . $this->table_name . 
 			" SET quantity = :quantity WHERE id = :id";
